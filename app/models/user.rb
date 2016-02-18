@@ -15,12 +15,13 @@ class User < ActiveRecord::Base
             format: { with: EMAIL_REGEX }
 
   has_secure_password
-  
+
   def format_name
-    formatted_name = []
-    name.split.each do |name|
-      formatted_name << name.capitalize
+    unless name.blank?
+      formatted_name = []
+      name.split.each do |name|
+        formatted_name << name.capitalize
+      end
+      self.name = formatted_name.join(" ")
     end
-    self.name = formatted_name.join(" ")
   end
-end
