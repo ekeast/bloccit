@@ -25,3 +25,4 @@ class User < ActiveRecord::Base
       self.name = formatted_name.join(" ")
     end
   end
+end
