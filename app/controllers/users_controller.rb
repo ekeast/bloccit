@@ -18,4 +18,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def confirm
+    :create
+  end
 end
