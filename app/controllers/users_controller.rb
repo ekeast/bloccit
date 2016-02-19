@@ -20,6 +20,5 @@ class UsersController < ApplicationController
   end
 
   def confirm
-    :create
   end
 end
