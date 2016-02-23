@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
   has_many :posts
+  has_many :comments 
 
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
