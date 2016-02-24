@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
 let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
 let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
 let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
-
+let(:post2) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
 it { is_expected.to have_many(:labelings) }
 it { is_expected.to have_many(:labels).through(:labelings) }
 
@@ -76,6 +76,12 @@ it { is_expected.to validate_length_of(:body).is_at_least(20) }
         old_rank = post.rank
         post.votes.create!(value: -1)
         expect(post.rank).to eq (old_rank - 1)
+      end
+    end
+
+    describe "#create_vote" do
+      it "sets the votes of a new post equal to 1" do
+        expect(post2.points).to eq (1)
       end
     end
   end
