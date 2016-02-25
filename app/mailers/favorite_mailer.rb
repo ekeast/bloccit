@@ -19,6 +19,7 @@ class FavoriteMailer < ApplicationMailer
     headers["References"] = "<post/#{post.id}@your-app-name.example>"
 
     @post = post
+
     mail(to: post.user.email, subject: "#{post.title} has been favorited by you")
   end
 end
