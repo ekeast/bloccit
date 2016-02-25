@@ -12,6 +12,7 @@ it { is_expected.to have_many(:labels).through(:labelings) }
 
 it { is_expected.to have_many(:comments) }
 it { is_expected.to have_many(:votes) }
+it { is_expected.to have_many(:favorites) }
 
 it { is_expected.to belong_to(:topic) }
 
