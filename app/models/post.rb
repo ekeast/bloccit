@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   has_many :labels, through: :labelings
 
   has_many :votes, dependent: :destroy
-  has_many :favorites, dependent: :destroy 
+  has_many :favorites, dependent: :destroy
 
   default_scope { order('rank DESC') }
 
@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   validates :user, presence: true
 
   after_create :create_vote
+#  after_create :create_favorite
 
   def up_votes
     votes.where(value: 1).count
@@ -44,4 +45,9 @@ class Post < ActiveRecord::Base
   def create_vote
     @vote = user.votes.create(value: 1, post: self)
   end
+
+#  def create_favorite
+#    @favorite = user.favorites.create(post: self)
+#    FavoriteMailer.new_post.(user, self).deliver_now
+#  end
 end
