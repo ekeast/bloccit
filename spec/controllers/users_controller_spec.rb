@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'random_data'
 
 RSpec.describe UsersController, type: :controller do
   let(:new_user_attributes) do
