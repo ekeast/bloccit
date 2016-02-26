@@ -3,10 +3,10 @@ require 'random_data'
 
 RSpec.describe Post, type: :model do
 
-let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
-let(:post2) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
+  let(:post2) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
 it { is_expected.to have_many(:labelings) }
 it { is_expected.to have_many(:labels).through(:labelings) }
 
