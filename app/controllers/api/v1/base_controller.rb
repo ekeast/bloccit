@@ -9,7 +9,7 @@ class Api::V1::BaseController < ApplicationController
       @current_user = User.find_by(auth_token: token)
     end
   end
-
+  
   def authorize_user
     unless @current_user && @current_user.admin?
       render json: {error: "Not Authorized", status: 403}, status: 403
